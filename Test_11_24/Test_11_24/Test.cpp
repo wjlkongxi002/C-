@@ -2,7 +2,37 @@
 #include <iostream>
 using namespace std;
 
-int& Add(int a, int b)
+int fun(int a, int b, int &c)
+{
+	c = a + b;
+	return c;
+}
+void swap(int &a, int &b)//做参数
+{
+	int tmp = a;
+	a = b;
+	b = tmp;
+}
+void main()
+{
+	int a = 10;
+	int b = 20;
+	int c;
+	int &ra = a;//引用
+
+	int *p = &a;//指针
+	int *&q = p;
+	*p = 20;
+
+	int ar[5] = { 1, 2, 3, 4, 5 };
+	int(&br)[5] = ar;//数组引用
+
+	swap(a, b);
+	fun(a, b, c);
+}
+
+
+/*int& Add(int a, int b)//引用做返回值
 {
 	int c = a + b;
 	return c;
@@ -11,7 +41,7 @@ int& Add(int a, int b)
 	{
 		int &ret = Add(1, 2);
 		Add(3, 4);
-		cout << "Add(1,2)=" << ret << endl;
+		cout << "Add(1,2)=" << ret << endl;//Add(1,2)=7
 		return 0;
 	}
 
@@ -19,12 +49,12 @@ int& Add(int a, int b)
 /*
 void main()
 {
-	//const int &a = 10;
-	////a = 12;不能对常引用变量进行修改
-	//const int &b = 10;
-	//double d = 12.34;
-	////int &rd = d;编译错误，rd为d的引用（别名），可能会更改d的值（而d是一个常量）
-	//const int &rd = d;
+	const int &a = 10;
+	//a = 12;不能对常引用变量进行修改
+	const int &b = 10;
+	double d = 12.34;
+	//int &rd = d;编译错误，rd为d的引用（别名），可能会更改d的值（而d是一个常量）
+	const int &rd = d;
 	const int &d = 20;   
 	printf("d = %d\n", d);
 
@@ -36,7 +66,7 @@ void main()
 
 }
 
-void main()
+void main()//引用只是一个别名，没有 独立空间，和其引用实体共用同一块空间
 {
 	int a = 10;
 	int &ra = a;
@@ -102,15 +132,6 @@ void main()
 	cout << g.GetPrice() << endl;
 	cout << g.GetTotalPrice() << endl;
 }
-
-
-
-
-
-
-
-
-
 
 
 void main()
