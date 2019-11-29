@@ -2,7 +2,120 @@
 #include <iostream>
 using namespace std;
 
-int fun(int a, int b, int &c)
+// 1 常方法的const 怎么了
+
+// 2 GetData() 与 GetData()const 能否共存
+
+// 3 拷贝构造函数的const 
+
+// 4 赋值语句 
+//operator=    重载运算符
+//   Test& operator=(const Test &t)
+
+//   void  operator=(Test t)
+
+class Student
+{
+public:
+	char name[10]; //成员数据  数据成员
+private:
+	char sex[3];
+	int age;
+protected:
+	int height;
+	int weight;
+};
+
+void main()
+{
+Student s;  // 实例化 对象
+	//s.age = 10;
+	strcpy(s.name, "放假啊");
+}
+
+/*
+void main()
+{
+	int ar[5] = { 1, 2, 3, 4, 5 };
+	int(&br)[5] = ar; //3
+
+	int(*par)[5] = &ar;
+
+	cout << sizeof(br) << endl;//20
+	cout << sizeof(par) << endl;//4
+}
+
+
+/*
+int& fun(const int &a, const int &b)
+{
+	int v = a + b;
+	return v;
+}
+void main()
+{
+	int a = 10;
+	int b = 20;
+
+	int &value = fun(a, b);
+	fun(100, 200);
+	cout << value << endl;//老师代码为啥写30
+
+}
+
+
+/*
+void swap(int &a, int &b)//做参数
+{
+	int tmp = a;
+	a = b;
+	b = tmp;
+
+
+
+int& fun(int a, int b, int &v)
+{
+	v = a + b;
+	return v;
+}
+
+void fun1(int a, int b, int &v)
+{
+	v = a + b;
+}
+
+void main()
+{
+	int a = 10;
+	int b = 20;
+	int &ra = a;//引用
+
+	int *p = &a;//指针
+	int *&q = p;
+
+	int ar[5] = { 1, 2, 3, 4, 5 };
+	int(&br)[5] = ar;//数组引用
+
+	swap(a, b);
+
+	int res;
+	int &value = fun(a, b, res);
+
+	fun1(100, 200, res);
+}
+
+/*void main()//啥意思不懂
+{
+	int *p = (int*)malloc(sizeof(int)* 3);
+	p[0] = 1;
+	p[1] = 2;
+	p[2] = 3;
+
+	free(p);
+}
+
+
+/*int fun(int a, int b, int &c)//有啥用
 {
 	c = a + b;
 	return c;
