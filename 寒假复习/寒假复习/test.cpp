@@ -2,6 +2,17 @@
 #include<iostream>
 using namespace std;
 
+
+int Add(int left, int right)
+{
+	return left + right;
+}
+int main()
+{
+	Add(1, 2);
+	return 0;
+}
+
 //namespace N
 //{
 //	int a=10;
@@ -90,22 +101,22 @@ double Add(double left, double right)
 //	printf("%d\n", rb);
 //}
 
-
-void TestConstRef()
-{
-	const int a = 10;
-	//int& ra = a; // 该语句编译时会出错，a为常量
-	const int& ra = a;
-	// int& b = 10; // 该语句编译时会出错，b为常量
-	const int& b = 10;
-	double d = 12.34;
-	//int& rd = d; // 该语句编译时会出错，类型不同
-	const int& rd = d;
-	printf("%d %d %d %.2f %d", a, ra, b, d, rd);
-}
-int main()
-{
-	//TestRef();
-	TestConstRef();
-	return 0;
-}
+//
+//void TestConstRef()
+//{
+//	const int a = 10;
+//	//int& ra = a; // 该语句编译时会出错，a为常量
+//	const int& ra = a;
+//	// int& b = 10; // 该语句编译时会出错，b为常量
+//	const int& b = 10;
+//	double d = 12.34;
+//	//int& rd = d; // 该语句编译时会出错，类型不同
+//	const int& rd = d;
+//	printf("%d %d %d %.2f %d", a, ra, b, d, rd);
+//}
+//int main()
+//{
+//	//TestRef();
+//	TestConstRef();
+//	return 0;
+//}
