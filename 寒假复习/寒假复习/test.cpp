@@ -1,7 +1,50 @@
 #define _CRT_SECURE_NO_WARNINGS 1
 #include<iostream>
+#include<string>
 using namespace std;
 
+class CPeople
+{
+	//friend ostream& operator<<(ostream &out, const CPeople &s);
+public:
+	CPeople(const std::string& name, int age)
+		: mName(name), mAge(age){}
+	~CPeople();
+
+	void Print()
+	{
+		std::cout << "show people info:" << std::endl;
+	}
+
+	void PrintInfo()
+	{
+		std::cout << "name:" << mName << std::endl;
+		std::cout << "age:" << mAge << std::endl;
+	}
+
+
+private:
+
+	std::string mName;
+	int mAge;
+
+};
+
+//ostream& operator<<(ostream &out, const CPeople &s)
+//{
+//	out << s.mAge;
+//	return out;
+//}
+int main()
+{
+	CPeople* jon = NULL;
+	jon->Print();  // 程序正常运行
+	jon->PrintInfo();  // 程序崩溃，访问非法地址，此时mName和mAge并没有分配空间
+	return 0;
+}
+
+
+/*
 class Date
 {
 	friend ostream& operator<<(ostream& _cout, const Date& d);
