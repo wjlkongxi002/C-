@@ -4,6 +4,137 @@
 #include<string>
 using namespace std;
 
+class String
+{
+	friend ostream& operator<<(ostream &out, const String &s);
+
+public:
+	String(const char*str = "")
+	{
+		m_str = new char[strlen(str) + 1];
+		strcpy(m_str, str);
+	}
+	String(const String &s) :m_str(nullptr)
+	{
+		String tmp(s.m_str);
+		std::swap(this->m_str, tmp.m_str);
+	}
+	~String()//析构函数
+	{
+		if (m_str)
+		{
+			delete[]m_str;
+			m_str = nullptr;
+		}
+	}
+	String& operator=(const  String &s)
+	{
+		if (this != &s)
+		{
+			String tmp(s);
+			std::swap(m_str, tmp.m_str);
+		}
+		return *this;
+	}
+
+private:
+	char *m_str;
+};
+
+ostream& operator<<(ostream &out, const String &s)
+{
+	out << s.m_str;
+	return out;
+}
+
+void main()
+{
+	String s="wang";
+	String s2 = s;
+	String s3;
+	s3 = s;
+	cout << "s = " << s << endl;
+	cout << "s2 = " << s2 << endl;
+	cout << "s3 = " << s3 << endl;
+
+}
+
+
+
+/*
+//传统版本的string类
+class String
+{
+	friend ostream& operator<<(ostream &out, const String &s);
+	friend istream& operator>>(ostream &in, String &s);
+public:
+	String(const char *str = "")//构造函数
+	{
+		m_str = new char[strlen(str) + 1];
+		strcpy(m_str, str);
+	}
+	String(const String &s)//拷贝构造函数，用对象初始化对象
+	{
+		m_str = new char[strlen(s.m_str) + 1];
+		strcpy(m_str, s.m_str);
+	}
+	String&operator=(const String &s)//重载=
+	{
+		if (this != &s)
+		{
+			delete[]m_str;
+			m_str = new char[strlen(s.m_str) + 1];
+			strcpy(m_str, s.m_str);
+		}
+		return *this;
+	}
+	~String()
+	{
+		if (m_str)
+		{
+			delete[]m_str;
+			m_str = nullptr; 
+		}
+	}
+private:
+	char *m_str;
+};
+ostream& operator<<(ostream &out, const String &s)
+{
+	out << s.m_str;
+	return out;
+}
+istream& operator>>(istream &in, String &s)
+{
+	char buf[100] = {};
+	in >> buf;
+	return in;
+
+}
+void main()
+{
+	String s;
+	cin>>s;
+	cout << "s = " << s << endl;
+
+}
+
+/*
+void main()
+{
+	String s="王佳龙";
+	String s1 = s;
+	String s2;
+	s2 = s;
+	cout << "s =" << s << endl;
+	cout << "s1=" << s1 << endl;
+	cout << "s2=" << s2 << endl;
+
+}
+*/
+
+
+/*
 void main()//输入字符串，获取字符串
 {
 	string s;
