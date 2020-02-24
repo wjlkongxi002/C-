@@ -4,6 +4,62 @@
 #include<string>
 using namespace std;
 
+
+namespace bit
+{
+	class string
+	{
+		friend ostream& operator<<(ostream &out, const string &s);
+	public:
+		string(const char*str = "") :m_str(nullptr)
+		{
+			m_capacity = m_size = strlen(str);
+			m_str = new char[m_capacity + 1];
+			strcpy(m_str, str);
+		}
+		string(const string&s) :m_str(nullptr), m_capacity(0), m_size(0)
+		{
+			string tmp(s.m_str);
+			_swap(*this, tmp);
+		}
+		~string()
+		{
+			if (m_str)
+			{
+				delete[]m_str;
+				m_str = nullptr;
+			}
+			m_capacity = m_size = 0;
+		}
+	protected:
+		static void _swap(string &s1, string &s2)
+		{
+			std::swap(s1.m_str, s2.m_str);
+			std::swap(s1.m_capacity, s2.m_capacity);
+			std::swap(s1.m_size, s2.m_size);
+		}
+	private:
+		char *m_str;
+		size_t m_capacity;
+		size_t m_size;
+	};
+	ostream& operator<<(ostream &out, const string &s)
+	{
+		out << s.m_str;
+		return out;
+	}
+
+
+};
+void main()
+{
+	bit::string str = "wang";
+	bit::string str2(str);
+	cout << "str = " << str << endl;
+	cout << "str2 = " << str2 << endl;
+
+}
+/*
 class String
 {
 	friend ostream& operator<<(ostream &out, const String &s);
