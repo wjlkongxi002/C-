@@ -4,6 +4,199 @@
 #include<string>
 #include<vector>
 using namespace std;
+
+namespace bit
+{
+	template <typename T>
+	class vector
+	{
+	public:
+		typedef T* iterator;
+	public:
+		vector() :start(nullptr), finish(nullptr), end_of_storage(nullptr)
+		{}
+		vector(size_t n, const T &value = T())
+			:start(nullptr), finish(nullptr), end_of_storage(nullptr)
+		{
+			reserve(n);
+			while (n-- != 0)
+				push_back(value);
+		}
+		~vector()
+		{
+			delete[]start;
+			start = finish = end_of_storage = nullptr;
+		}
+	public:
+		void push_back(const T &x)
+		{
+			insert(end(), x);
+		}
+	public:
+		void reserve(size_t n)
+		{
+			if (n > capacity())
+			{
+				size_t oldsize = size();
+				T *new_start = new T[n];
+				if (start)
+				{
+					for (int i = 0; i < oldsize; ++i)
+					{
+						new_start[i] = start[i];
+					}
+				}
+
+				if (start)
+					delete[]start;
+
+				start = new_start;
+				finish = start + oldsize;
+				end_of_storage = start + n;
+			}
+		}
+
+		void resize(size_t n, const T& value = T())
+		{
+			if (n <= size())
+			{
+				finish = start + n;
+				return;
+			}
+			if (n > capacity())
+				reserve(n * 2);
+
+			iterator p = finish; 定义一个迭代器p，指向finish的位置
+				finish = start + n;
+			while (p != finish)
+			{
+				*p = value;
+				p++;
+			}
+		}
+
+		//在POS位置上插入X  返回插入元素后迭代器所指的位置
+		iterator insert(iterator pos, const T &x)
+		{
+			if (finish >= end_of_storage)
+			{
+				size_t oldpos = pos - start;
+				size_t new_cpt = capacity() ? capacity() * 2 : 1;
+				reserve(new_cpt);
+
+				//重新定位迭代器
+				pos = start + oldpos;
+			}
+
+			iterator p = finish;
+			while (p != pos)
+			{
+				*p = *(p - 1);
+				p--;
+			}
+			*p = x;
+			finish++;
+			return pos;
+		}
+
+
+		iterator erase(iterator pos)
+		{
+			iterator p = pos;
+			while (p != finish - 1)
+			{
+				*p = *(p + 1);
+				p++;
+			}
+			finish--;
+			return pos;
+		}
+	public:
+		size_t size()
+		{
+			return finish - start;
+		}
+		size_t capacity()
+		{
+			return end_of_storage - start;
+		}
+		bool empty()
+		{
+			return finish == start;
+		}
+		iterator begin()
+		{
+			return start;
+		}
+		iterator end()
+		{
+			return finish;
+		}
+	private:
+		iterator start;
+		iterator finish;
+		iterator end_of_storage;
+	};
+}
+	void main()
+	{
+		bit::vector<int> v = (10, 1);
+		cout << "size =" << v.size() << endl;
+		cout << "capacity =" << v.capacity() << endl;
+		for (auto &e : v)
+			cout << e << " ";
+		cout << endl;
+	}
+
+
+
+	/*void main()
+	{
+	bit::vector<int> v;
+	cout << "size =" << v.size() << endl;
+	cout << "capacity =" << v.capacity() << endl;
+	v.insert(v.begin(), 1);
+	v.insert(v.begin(), 2);
+	v.insert(v.begin(), 3);
+	v.insert(v.begin(), 4);
+	v.insert(v.end(), 0);
+
+	auto p = find(v.begin(), v.end(), 3);
+	v.insert(p, 10);
+	v.push_back(200);
+	for (auto &e : v)
+	cout << e << " ";
+	cout << endl;
+
+	//p = find(v.begin(), v.end(), 10);
+	//v.erase(p);
+	v.erase(v.end());
+
+	for (auto &e : v)
+	cout << e << " ";
+	cout << endl;
+	/*
+	v.resize(15, 1);
+	cout << "size =" << v.size() << endl;
+	cout << "capacity =" << v.capacity() << endl;
+	for (auto &e : v)
+	cout << e << " ";
+	cout << endl;
+	/*
+	v.reserve(2);
+	cout << "size =" << v.size() << endl;
+	cout << "capacity =" << v.capacity() << endl;
+	v.reserve(20);
+	cout << "size =" << v.size() << endl;
+	cout << "capacity =" << v.capacity() << endl;
+	v.reserve(2);
+	cout << "size =" << v.size() << endl;
+	cout << "capacity =" << v.capacity() << endl;
+	*/
+
+
+
+
 /*
 void main()
 {
@@ -14,9 +207,9 @@ void main()
 		cout << "capacity = " << v.capacity() << endl;
 		v.push_back(i);
 	}
-}
+} 
 
-*/
+
 
 void Print(vector<int> &v)
 {
