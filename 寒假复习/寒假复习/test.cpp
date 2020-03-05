@@ -1,8 +1,31 @@
 #define _CRT_SECURE_NO_WARNINGS 1
-#include<iostream>
-#include<string>
+#include <iostream>
+#include <string>
 using namespace std;
-
+// cin读取string时自动会被空格分隔开，用另一个字符串存储进行逆序输出
+int main()
+{
+	string s1, s2;
+	cin >> s1;
+	while (cin >> s2)
+		s1 = s2 + " " + s1;
+	cout << s1 << endl;
+	return 0;
+}
+/*
+int main()
+{
+	string s1,s2;
+	
+	cin >> s1;
+	while (cin >> s2)
+	{
+		s1 = s2 + " " + s1;
+	}
+	cout << s1 <<endl; 
+	return 0;
+}
+/*
 class CPeople
 {
 	//friend ostream& operator<<(ostream &out, const CPeople &s);
