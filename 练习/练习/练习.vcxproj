@@ -14,6 +14,7 @@
     <ProjectGuid>{DAAE0AA6-6A72-43E1-9A8C-FED5F7E3E46A}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>练习</RootNamespace>
+    <ProjectName>C++练习</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
