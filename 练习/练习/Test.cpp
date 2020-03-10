@@ -4,6 +4,74 @@
 #include <string>
 using namespace std;
 
+
+int main()
+{
+	int F1 = 0, F2 = 1;
+	int F`
+	return 0;
+
+}
+
+/*
+class A
+{
+	friend long fun(A s)
+	{
+		if (s.x < 3)
+		{
+			return 1;
+		}
+		return s.x + fun(A(s.x - 1));
+	}
+
+public:
+	A(long a)
+	{
+		x = a--;
+	}
+private:
+	long x;
+};
+int main()
+{
+	int sum = 0;
+	for (int i = 0; i < 5; i++)
+	{
+		sum += fun(A(i));
+	}
+	cout << sum;
+}
+
+
+
+/*
+class Solution {
+public:
+	int StrToInt(string str)
+	{
+		if (str.empty())
+			return 0;
+		int sum = 0;
+		for (int i = 0; i<str.length(); ++i)
+		{
+			if (str[i]<'0' || str[i]>'9')
+				return sum = 0;
+			sum = sum * 10 + str[i];
+		}
+		return sum;
+	}
+};
+int main()
+{
+	string s;
+	getline(cin, s);
+    std::string StrToInt(s);
+	cout << s << endl;
+	return 0;
+}
+
+/*
 char fun(char x, char y)
 {
 	if (x < y)
