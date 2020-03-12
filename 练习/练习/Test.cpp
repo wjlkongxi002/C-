@@ -4,7 +4,62 @@
 #include <string>
 using namespace std;
 
+class cla{
+public:
+	cla(int i = 0)
+	{
+		cout << 1;
+	}
+	cla(const cla&x)
+	{
+		cout << 2;
+	}
+	cla &operator=(const cla&x)
+	{
+		cout << 3; return *this;
+	}
+	~cla()
+	{
+		cout << 4;
+	}
+};
+int main()
+{
+	cla obj1(1), obj2(2), obj3(obj1);
+	return 0;
+}
 
+/*
+void func(char **m)
+{
+	m++;
+	cout << *m << endl;//afternoonÊä³ö½á¹û
+}
+int main()
+{
+	static char *a[] = { "morning", "aftrnoon", "evenibg" };
+	char **p;
+	p = a;
+	func(p);
+	return 0;
+}
+/*
+class cla{
+	static int n;
+public:cla(){ n++; }
+	   ~cla(){ n--; }
+	   static int get_n(){ return n; }
+};
+int cla::n = 0;
+int main()
+{
+	cla*p = new cla;
+	delete p;
+	cout << "n=" << cla::get_n() << endl;
+	return 0;
+}
+
+/*
 int main()
 {
 	int F1 = 0, F2 = 1;
