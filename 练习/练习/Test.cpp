@@ -4,6 +4,64 @@
 #include <string>
 using namespace std;
 
+struct A{
+	void foo(){ printf("foo"); }
+	virtual void bar(){ printf("bar"); }
+	A(){ bar(); }
+
+};
+struct B :A{
+	void foo(){ printf("b_foo"); }
+	void bar(){ printf("b_bar"); }
+};
+int main()
+{
+	A *p = new B;
+	p->foo();
+	p->bar();
+	return 0;
+}
+
+/*
+int main()
+{
+	int **a[3][4];
+	cout << sizeof(a) << endl;//48
+	return 0;
+}
+
+/*
+//Êä³ö&&&&&&&
+int main()
+{
+	int i = 1;
+	if (i <= 0)
+		cout << " **** " << endl;
+	else
+		cout << "&&&&&&" << endl;
+	return 0;
+}
+
+
+/*
+//  ab
+class p{
+public:
+	p(std::string name){ std::cout << name; }
+};
+class c{
+public:
+	c() :b("b"), a("a"){}
+	p a;
+	p b;
+};
+
+int main()
+{
+	c m;
+	return 0;
+}
+/*
 class cla{
 public:
 	cla(int i = 0)
