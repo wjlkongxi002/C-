@@ -4,6 +4,43 @@
 #include <string>
 using namespace std;
 
+class cla{
+public:
+	cla(int i = 0)
+	{
+		cout << 1;
+	}
+	cla(const cla&x)
+	{
+		cout << 2;
+	}
+	cla &operator=(const cla&x)
+	{
+		cout << 3; return *this;
+	}
+	~cla()
+	{
+		cout << 4;
+	}
+};
+int main()
+{
+	cla obj1(1), obj2(2), obj3(obj1);
+	return 0;
+}
+
+/*
+int main()
+{
+	int i = 1;
+	if (i <= 0)
+		cout << " **** " << endl;
+	else
+		cout << "&&&&&&" << endl;
+	return 0;
+}
+
+/*
 struct A{
 	void foo(){ printf("foo"); }
 	virtual void bar(){ printf("bar"); }
