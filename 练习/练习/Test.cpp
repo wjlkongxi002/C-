@@ -1,9 +1,31 @@
 #define _CRT_SECURE_NO_WARNINGS 1
-
 #include <iostream>
 #include <string>
 using namespace std;
 
+
+
+int main()
+{
+	int arr[12] = { 31, 59, 90, 120, 151, 181, 212, 243, 273, 304, 334, 265 };
+	int year, month, day;
+	int sum = 0;
+	while (cin >> year >> month >> day)
+	{
+		sum = 0;
+		sum += arr[month - 2];
+		sum += day;
+		if (month>2)
+		{
+			if ((year % 4 == 0 && year % 100 != 0) || year % 400 == 0)
+			{
+				sum += 1;
+			}
+		}
+		cout << sum << endl;
+	}
+}
+/*
 class cla{
 public:
 	cla(int i = 0)
