@@ -3,8 +3,86 @@
 #include <string>
 using namespace std;
 
+int main()
+{
+	string s;
+	size_t begin = 0;
+	size_t end = s.size() - 1;
+	while (s[begin] < s[end])
+	{
+		swap(s[begin], s[end]);
+		begin++;
+		end--;
+	}
+		
+	return 0;
+}
+
+/*
+class Solution {
+public:
+	string reverseString(string s) {
+		if (s.empty())
+			return s;
+		size_t start = 0;
+		size_t end = s.size() - 1;
+		while (start < end)
+		{
+			swap(s[start], s[end]);
+			++start;
+			--end;
+		}
+		return s;
+	}
+};
+int main()
+{
+	string s;
+	cin >> s;
+	return 0;
+}
+/*
+int main()
+{
+	string a, b;
+	while (cin >> a >> b)
+	{
+		if (a.size()>b.size())
+			swap(a, b);
+		string str_m;
+		for (int i = 0; i<a.size(); i++)
+		{
+			for (int j = i; j<a.size(); j++)
+			{
+				string temp = a.substr(i, j - i + 1);
+				if (int(b.find(temp))<0)
+					break;
+				else if (str_m.size()<temp.size())
+					str_m = temp;
+			}
+		}
+		cout << str_m << endl;
+	}
+	return 0;
+}
+
+/*
+int main()
+{
+	int n;
+	while 
+	{
+		while (n != 0)
+		{
+			n = n / 2;
+			cout << n << endl;
+		}
+	}
+	return 0;
+}
 
 
+/*
 int main()
 {
 	int arr[12] = { 31, 59, 90, 120, 151, 181, 212, 243, 273, 304, 334, 265 };
