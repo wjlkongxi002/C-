@@ -2,7 +2,83 @@
 #include <iostream>
 #include <string>
 using namespace std;
+int main()
+{
+	int n, r;
+	while (cin >> n >> r);
+	{
+		if (n > (2 * 3.14*r))
+			cout << "No" << endl;
+		else
+		cout << "Yes" << endl;
+	}
+	return 0;
+}
 
+/*
+int main()
+{
+	int n, r;
+	cin >> n >> r;
+	if (n > 2 * 3.14*r)
+		cout << 'No' << endl;
+	cout << 'Yes' << endl;
+		return 0;
+}
+
+/*
+int getnode(int n)
+{
+	int node = 0;
+	while (n > 0)
+	{
+		node += n % 10;
+		n = n / 10;
+	}
+	while (node > 9)
+	{
+		node = getnode(node);
+	}
+	return node;
+}
+int main()
+{
+	string s;
+	getline(cin, s);
+	return 0;
+}
+
+/*
+int getnode(int n)
+{
+	int node = 0;
+	while (n > 0)
+	{
+		node += n % 10;
+		n = n / 10;
+	}
+	while (node > 9)
+	{
+		node = getnode(node);
+	}
+	return node;
+}
+int main()
+{
+	string s;
+	while (cin >> s)
+	{
+		int sum = 0;
+		for (int i = 0; i < s.length(); i++) 
+		{
+			sum += s[i] - '0';
+		}
+		cout << getnode(sum) << endl;
+	}
+	return 0;
+}
+
+/*
 int main()
 {
 	string s;
