@@ -1,10 +1,34 @@
 #define _CRT_SECURE_NO_WARNINGS 1
 #include <iostream>
 #include <string>
+#include<math.h>
 using namespace std;
+
 int main()
 {
-	int n, r;
+	int n, i, j = 0;
+	while (cin >> n)
+	{
+		for (i = 2; i <= sqrt(n); i++)
+		{
+			while (n / i == 0)
+			{
+				if (n%i == 0)
+					n = n / i;
+			}
+			j++;
+		}
+		
+		if (n%i == 0)
+			cout << j -1<< endl;
+	}
+	return 0;
+}
+
+/*
+int main()
+{
+	double n, r;
 	while (cin >> n >> r);
 	{
 		if (n > (2 * 3.14*r))
