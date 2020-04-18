@@ -5,7 +5,12 @@
 void Test_DirectionList()
 {
 	const string &path = "C:\\Users\\29357\\Desktop\\pro";
-	DirectionList(path);
+	vector<string> subfile, subdir;
+	DirectionList(path,subfile,subdir);
+	for (const auto &e : subfile)
+		cout << e << endl;
+	for (const auto &e : subdir)
+		cout << e << endl;
 }
 
 int main(int argc,char* argv[])
