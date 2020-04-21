@@ -1,11 +1,11 @@
- #define _CRT_SECURE_NO_WARNINGS 1
+#define _CRT_SECURE_NO_WARNINGS 1
 #include"Common.h"
 #include"Sysutil.h"
 #include"./sqlite/sqlite3.h"     //具体路径下的头文件
+#include"DataManager.h"
+#include"ScanManager.h"
 
 
-//静态库调用
-#pragma comment (lib,"./sqlite/sqlite3.lib")
 void Test_DirectionList()
 {
 	const string &path = "C:\\Users\\29357\\Desktop\\pro";
@@ -22,7 +22,8 @@ void Test_Sqlite()
 	sqlite3 *db;
 	int rc = sqlite3_open("test.db", &db);
 	if (rc != SQLITE_OK)
-		printf("Open database failed.\n");
+		cout << "Open database failed." << endl;
+		//printf("Open database failed.\n");
 	else
 		printf("Open database successed.\n");
 	
@@ -50,7 +51,61 @@ void Test_Sqlite()
 	sqlite3_close(db);
 
 }
+void Test_SqliteManager()
+{
+	SqliteManager sm;
+	sm.Open("doc.db");
 
+	//string sql = "create table if not exists doc_tb(id integer primary key autoincrement, doc_name text, doc_path text)";
+	//sm.ExecuteSql(sql);
+	//string sql1 = "insert into doc_tb values(null, 'stl.pdf', 'c:\\')";
+	//sm.ExecuteSql(sql1);
+
+	string sql = "select * from doc_tb";
+	int row = 0, col = 0;
+	char **ppRet = 0;
+	sm.GetResultTable(sql, row, col, ppRet);
+	for (int i = 0; i <= row; ++i)
+	{
+		for (int j = 0; j<col; ++j)
+		{
+			printf("%-10s", *(ppRet + (i*col) + j));
+		}
+		cout << endl;
+	} 
+	sqlite3_free_table(ppRet);
+}
+
+void Test_Log()//日志测试
+{
+	FILE *fp = fopen("Test.txt", "r");
+	if (fp == NULL)
+	{
+		TRACE_LOG("Open File Error.");
+		return;
+	}
+	else
+		TRACE_LOG("Open File Success.");
+
+	fclose(fp);
+}
+
+void Test_Scan()
+{
+	const string &path = "C:\\Users\\29357\\Desktop\\pro";
+	ScanManager sm;
+    sm.ScanDirectory(path);
+}
+
+int main(int argc, char* argv[])
+{
+	//Test_Log();//日志测试
+	//Test_SqliteManager();//数据库管理测试（封装）
+	//Test_Sqlite();
+	//Test_DirectionList();
+	Test_Scan();
+	return 0;
+}
 /*
 static int callback(void *data, int argc, char **argv, char **azColName)//回调函数
 {
@@ -108,11 +163,11 @@ void Test_Sqlite()
 		fprintf(stderr, "Opened database successfully\n");
 	}
 	sqlite3_close(db);
-}*/
+}
 
 int main(int argc,char* argv[])
 {
 	Test_Sqlite();
 	//Test_DirectionList();
 	return 0;
-}
+}*/
