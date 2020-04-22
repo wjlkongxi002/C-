@@ -8,10 +8,10 @@ void DirectionList(const string &path, vector<string> &subfile, vector<string> &
 ///////////////////////////////////////////////////////////////////////////
 //»’÷æ
 #ifndef __TRACE__
-   //#define __TRACE__
+  // #define __TRACE__
 #endif
 #ifndef __DEBUG__
-   #define __DEBUG__
+  #define __DEBUG__
 #endif
 
 ///////////////////////////////////////////////////////////////////////

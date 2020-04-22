@@ -97,13 +97,40 @@ void Test_Scan()
     sm.ScanDirectory(path);
 }
 
+void Test_Search()
+{
+	const string &path = "C:\\Users\\29357\\Desktop\\pro";
+
+	//创建扫描实例
+	ScanManager sm;
+	sm.ScanDirectory(path);
+
+	//创建搜索实例
+	DataManager dm;
+	string key;
+
+	vector<pair<string, string>> doc_path;
+	while (1)
+	{
+		cout << "请输入要搜索的关键字:>";
+		cin >> key;
+		dm.Search(key, doc_path);
+
+		//显示结果
+		printf("%-15s%-50s\n", "名称", "路径");
+		for (const auto &e : doc_path)
+			printf("%-15s%-50s\n", e.first.c_str(), e.second.c_str());
+	}
+}
+
 int main(int argc, char* argv[])
 {
 	//Test_Log();//日志测试
 	//Test_SqliteManager();//数据库管理测试（封装）
 	//Test_Sqlite();
 	//Test_DirectionList();
-	Test_Scan();
+	//Test_Scan();
+	Test_Search();
 	return 0;
 }
 /*
