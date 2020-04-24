@@ -123,6 +123,39 @@ void Test_Search()
 	}
 }
 
+void thread_fun(int n)
+{
+	for (int i = 0; i<n; ++i)
+	{
+		cout << "This is Child Thread." << endl;
+	}
+}
+
+class Test
+{
+public:
+	void fun()
+	{
+		cout << "This is Test::fun()" << endl;
+	}
+};
+
+void Test_Thread()
+{
+	Test t;
+	thread th(&Test::fun, &t);
+	th.detach();  //分离
+
+	for (int i = 0; i<10; ++i)
+	{
+		cout << "This is Main Thread." << endl;
+	}
+
+	//th.join();//等待
+
+}
+
+
 int main(int argc, char* argv[])
 {
 	//Test_Log();//日志测试
@@ -130,7 +163,8 @@ int main(int argc, char* argv[])
 	//Test_Sqlite();
 	//Test_DirectionList();
 	//Test_Scan();
-	Test_Search();
+	//Test_Search();
+	Test_Thread();
 	return 0;
 }
 /*
