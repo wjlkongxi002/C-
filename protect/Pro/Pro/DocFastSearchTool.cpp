@@ -123,7 +123,7 @@ void Test_Search()
 	}
 }
 
-void thread_fun(int n)
+void thread_fun(int n)//Ïß³Ìº¯Êý
 {
 	for (int i = 0; i<n; ++i)
 	{
