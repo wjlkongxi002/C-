@@ -1,13 +1,17 @@
 #define _CRT_SECURE_NO_WARNINGS 1
 
 #include <iostream>
+#include <vector>
 #include <string>
+
+
 using namespace std;
 
 //1.替换空格  https://leetcode-cn.com/problems/ti-huan-kong-ge-lcof/
 
 /*
-Solution {
+
+class Solution {
 public:
 	string replaceSpace(string s) {
 		string s1;
@@ -26,7 +30,6 @@ int main()
 {
 	string replaceSpace("wang jia");
 }
-//1.替换空格
 
 
 class Solution {
@@ -70,10 +73,10 @@ int main()
 
 */
 
-#if 0
+
 // 2. 第一个只出现一次的字符   https://leetcode-cn.com/problems/di-yi-ge-zhi-chu-xian-yi-ci-de-zi-fu-lcof/
 
-
+/*
 class Solution {
 public:
 	char firstUniqChar(string s) {
@@ -92,11 +95,12 @@ public:
 		return ' ';//上面走完还没有返回，就说明没有只出现一次的字符，就返回‘ ’
 	}
 };
+*/
 
-#endif
 
 // 3. 字符串中第一个唯一字符  https://leetcode-cn.com/problems/first-unique-character-in-a-string/
 
+/*
 class Solution {
 public:
 	int firstUniqChar(string s) {
@@ -113,3 +117,80 @@ public:
 		return -1;
 	}
 };
+*/
+
+//4.找出数组中重复的数字  https://leetcode-cn.com/problems/shu-zu-zhong-zhong-fu-de-shu-zi-lcof/
+
+/*
+
+//计数器的方法，把数组中每个数字出现的个数记录下来，然后便利这个计数器
+// 当计数器有大于1 的，就把这个随影的数字返回
+
+class Solution {
+public:
+	int findRepeatNumber(vector<int>& nums) {
+		int count[100000] = { 0 };
+		for (int i = 0; i<nums.size(); i++)
+		{
+			count[nums[i]]++;
+		}
+		for (int i = 0; i<nums.size(); ++i)
+		{
+			if (count[nums[i]]>1)
+				return nums[i];
+		}
+		return -1;
+	}
+};
+*/
+
+
+/* 
+// 排序法，先排序，再遍历，如果有两个相同的，就返回该数字
+class Solution {
+public:
+	int findRepeatNumber(vector<int>& nums) {
+		vector<int> v(nums);
+		vector<int>::iterator it = nums.begin();
+		sort(nums.begin(), nums.end());
+		while (it != v.end())
+		{
+			if (*it == *(it + 1))
+				return *it;
+			++it;
+
+		}
+
+		return -1;
+	}
+};
+*/
+
+/*
+class Solution {
+public:
+	int findRepeatNumber(vector<int>& nums) {
+		vector<int> v;
+		v.resize(nums.size());  //resize()重置数组的大小，reserve()是扩充数组的容量
+		for (int i = 0; i<nums.size(); i++)
+		{
+			v[nums[i]]++;
+		}
+		for (int i = 0; i<nums.size(); ++i)
+		{
+			if (v[nums[i]]>1)
+				return nums[i];
+		}
+		return -1;
+	}
+};
+
+
+int main()
+{
+	Solution s;
+	vector<int> v = { 2, 3, 1, 0, 2, 5, 3 };
+	int a = s.findRepeatNumber(v);
+	return 0;
+}
+*/
