@@ -4,6 +4,24 @@
 #include<math.h>
 using namespace std;
 
+//double Add(int left, int right)函数重载，不考虑函数返回值类型
+//{
+	 //return left + right;
+//}
+
+
+int Add(int left, int right)
+{
+	return left + right;
+}
+
+int main()
+{
+	Add(1, 2);
+	return 0;
+}
+
+/*
 int main()
 {
 	int n, i, j = 0;
@@ -24,6 +42,8 @@ int main()
 	}
 	return 0;
 }
+*/
+
 
 /*
 int main()
