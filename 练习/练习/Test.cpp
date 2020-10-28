@@ -1,15 +1,44 @@
 #define _CRT_SECURE_NO_WARNINGS 1
 #include <iostream>
 #include <string>
+#include <vector>
 #include<math.h>
 using namespace std;
+
+
+
+class Solution {
+public:
+	vector<int> twoSum(vector<int>& nums, int target) {
+		int i = 0, j = nums.size() - 1;
+		while (i<j)
+		{
+			int s = nums[i] + nums[j];
+			if (s == target)
+				return{ nums[i], nums[j] };
+			if (s>target)
+				j--;
+			if (s<target)
+				i++;
+		}
+		return{};
+	}
+};
+
+int main()
+{
+	Solution s;
+	vector<int> v = { 2, 7, 11, 15 };
+	s.twoSum(v, 20);
+	return 0;
+}
 
 //double Add(int left, int right)函数重载，不考虑函数返回值类型
 //{
 	 //return left + right;
 //}
 
-
+/*
 int Add(int left, int right)
 {
 	return left + right;
@@ -19,7 +48,7 @@ int main()
 {
 	Add(1, 2);
 	return 0;
-}
+}*/
 
 /*
 int main()
