@@ -5,6 +5,112 @@
 #include<vector>
 using namespace std;
 
+void Test1()//构造函数
+{
+	vector<int> v1;
+	vector<int> v2{1,2,3,4,5};
+	
+	vector<int> v3(v2);//拷贝构造
+	vector<int> v4(10, 1);//10个1
+	int arr[] = { 1, 2, 3, 4, 5 };  //定义数组
+	vector<int> v6(arr, arr + sizeof(arr) / sizeof(arr[0]));
+    vector<int> v5(v2.begin(), v2.end());//迭代器
+	
+	string s("hello");
+	vector<char> v(s.begin(), s.end());
+
+	cout << v2[0] << endl;
+}
+void Test2()
+{
+	// 循环打印
+	vector<int> v = { 1, 2, 3, 4, 5 };
+	for (int i = 0; i < v.size(); ++i)
+	{
+		cout << v[i] <<" ";
+	}
+	cout << endl;
+
+	//e是对v中每一个元素的引用，会改变元素的值
+	for (auto& e : v)
+	{
+		cout << e*2 << " ";
+	}
+	cout << endl;
+
+	// 范围for的原理与采用与迭代器的原理是一样的，完全相同的
+	for (auto e : v)
+	{
+		cout << e << " ";
+	}
+	cout << endl;
+	vector<int>::iterator it = v.begin();
+	while (it != v.end())
+	{
+		cout << *it << " ";
+		++it;
+	}
+	cout << endl;
+	auto rit = v.rbegin();
+	while (rit != v.rend())
+	{
+		cout << *rit << " ";
+		++rit;
+	}
+	cout << endl;
+}
+
+void Test3()
+{
+	vector<int> v{ 1, 2, 3, 4, 5 };
+	if (v.empty())
+		cout << " v empty " << endl;
+	cout << v.size()<< endl;
+	cout << v.capacity() << endl;
+
+	/*
+	void resize(size_type sz, T c = T())
+	将vector中的有效元素个数调整到sz个，如果多出，就会用c元素来填充
+	假设：原始空间大小为oldsize，底层容量为oldcapa
+	
+	
+	*/
+	v.resize(10, 0);
+
+}
+class A
+{
+public:
+
+	A()
+	{
+	}
+	A(int a = 10)
+		: _a(a)
+	{}
+
+	A(const A& a)
+		: _a(a._a)
+	{
+		cout << "A(const A&)" << endl;
+	}
+private:
+	int _a;
+};
+
+int main()
+{
+	// Test1();
+	// Test2();
+	// Test3();
+	A b;
+	return 0;
+}
+
+
+
+
+/*
 namespace bit
 {
 	template <typename T>
@@ -147,6 +253,8 @@ namespace bit
 			cout << e << " ";
 		cout << endl;
 	}
+*/
+
 
 
 
