@@ -72,8 +72,12 @@ void Test3()
 	void resize(size_type sz, T c = T())
 	将vector中的有效元素个数调整到sz个，如果多出，就会用c元素来填充
 	假设：原始空间大小为oldsize，底层容量为oldcapa
-	
-	
+     如果sz< oldsize ，newsize就是sz大小，newcapa=oldcapa
+	 如果sz> oldsize
+	     sz < oldcapa 将有效空间扩充到sz，多出的用c填充
+		 sz > oldcapa 扩容，开辟空间
+		                    拷贝元素
+							释放原有空间
 	*/
 	v.resize(10, 0);
 
@@ -82,9 +86,7 @@ class A
 {
 public:
 
-	A()
-	{
-	}
+
 	A(int a = 10)
 		: _a(a)
 	{}
@@ -98,12 +100,79 @@ private:
 	int _a;
 };
 
+void Test4()
+{
+	vector<int> v{ 1, 2, 3, 4, 5 };
+	v.reserve(10);
+	v.reserve(20);
+	v.reserve(15);
+	//reserve 在底层扩充容量，当扩充的容量比上一次的少的时候
+	//容量大小不变还是上一次的容量
+	//当扩充的容量n比之前的容量大的时候，开辟n个空间，将旧元素拷贝到心得空间中，释放原来的空间
+
+}
+void Test5()
+{
+	vector<int> v{};
+	cout << v[0] << endl;
+	cout << v.at(0) << endl;
+	cout << v.front() << endl;
+	cout << v.back() << endl;
+	/*
+	下标访问或者at访问时，front back访问数组函数时，vector中
+	必须有元素，不能是空的，否则会出现越界访问的错误
+	*/
+}
+
+void Test6()
+{
+	vector<int> v{ 1, 2, 3, 4 };
+	v.push_back(5);
+	v.push_back(6);
+	v.pop_back();//pop_back()是无参的
+	vector<int>::iterator it = v.begin();
+	v.insert(it,0);
+	//v.insert(v.begin(), 5, 9);
+	// 需求在元素2的位置插入10个值为5的元素
+	//v.insert(v.begin() + 2, 10, 5);
+	//v.insert(find(v.begin(), v.end(), 2), 10, 5);
+	//将数组array中的元素插入到v的尾部
+	int arr[] = { 5, 6, 7, 8 };
+	//代码错误，不知道啥原因：原因是 数组名就是数组首元素的地址，
+	// arr[0] 指的是首元素，不是地址
+	// v.insert(v.end(), arr[0], arr[0] + sizeof(arr) / sizeof(arr[0])-1);
+	v.insert(v.end(), arr, arr + sizeof(arr) / sizeof(arr[0]));
+}
+void Test7()
+{
+	vector<int> v{ 1, 2, 3, 4 };
+
+	//v.erase(v.begin());
+	v.erase(v.end()-1);
+	// v.erase(v.end());
+	/*
+	该函数的返回值是，删除的元素的下一个元素的地址
+	不能删除最后一个元素，原因是最后一个元素没有下一个元素
+	*/
+}
+void Test8()
+{
+	vector<int> v1{ 1, 2, 3, 4 };
+	vector<int> v2{ 5, 6, 7, 8 };
+	v1.swap(v2);
+	swap(v1, v2);
+}
 int main()
 {
 	// Test1();
 	// Test2();
 	// Test3();
-	A b;
+	// Test4();
+	// Test5();
+	// Test6();
+	//Test7();
+	Test8();
+
 	return 0;
 }
 
