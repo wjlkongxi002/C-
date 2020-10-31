@@ -85,7 +85,9 @@ void Test3()
 class A
 {
 public:
-
+	
+	//A() 无参的构造函数只能有一个，出现多个就会产生二义性，导致在构造时不知道使用哪一个
+	//{}
 
 	A(int a = 10)
 		: _a(a)
@@ -159,9 +161,59 @@ void Test8()
 {
 	vector<int> v1{ 1, 2, 3, 4 };
 	vector<int> v2{ 5, 6, 7, 8 };
-	v1.swap(v2);
-	swap(v1, v2);
+	v1.swap(v2);//通过交换指向两个空间的指针来进行空间的交换，可能会存在迭代器的失效问题
+	swap(v1, v2);//实现原理是在底层创建了一个临时空间，通过临时空间进行交换
 }
+void Test9(size_t n)
+{
+	//打印杨辉三角
+	//1
+	//1 1
+	//1 2 1
+	//1 3 3 1
+	//1 4 6 4 1
+	vector<vector<int>> vv;//二维数组
+	
+	// 开辟保存每行vector元素的空间
+	vv.resize(n);
+	
+	// 开辟每行的空间
+	for (size_t i = 0; i < n; ++i)
+	{
+		vv[i].resize(i + 1, 1);//第几行就有第几个元素，每个元素置为1
+	}
+
+	// 计算出第0行和对角线之外的元素
+
+	for (size_t i = 2; i < n; ++i) //前两行都是1,从第三行开始，下标从0开始
+	{
+		for (size_t j = 1; j < i; ++j)//第0行全是1，从第1行开始
+		{
+			vv[i][j] = vv[i - 1][j] + vv[i - 1][j - 1];//该元素等于它上一行的元素+上一行元素左边一个
+		}
+	}
+	for (size_t i = 0; i < n; ++i)
+	{
+		for (size_t j = 0; j < vv[i].size(); ++j)
+		{
+			printf("%3d", vv[i][j]);
+		}
+		printf("\n");
+	}
+}
+
+//创建二维数组，二级指针
+	int **Create(int row, int col)
+	{
+		int **p = new int*[row]; //开辟row行，每一行是一个int*类型
+		for (int i = 0; i < row; ++i)
+		{
+			p[i] = new int[col];//开辟列空间，每一行有col个元素
+		}
+		return p;
+	}
+
+
 int main()
 {
 	// Test1();
@@ -171,7 +223,9 @@ int main()
 	// Test5();
 	// Test6();
 	//Test7();
-	Test8();
+	// Test8();
+    // A b;
+	Test9(5);
 
 	return 0;
 }
