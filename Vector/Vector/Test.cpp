@@ -214,6 +214,8 @@ void Test9(size_t n)
 	}
 
 
+
+#include "Vector.h"
 int main()
 {
 	// Test1();
@@ -222,11 +224,11 @@ int main()
 	// Test4();
 	// Test5();
 	// Test6();
-	//Test7();
+	// Test7();
 	// Test8();
     // A b;
-	Test9(5);
-
+	// Test9(5);
+	bite::vector<int> v;
 	return 0;
 }
 
