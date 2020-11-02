@@ -6,7 +6,28 @@
 using namespace std;
 
 
+class Solution {
+public:
+	int fib(int n) {
+		if (n == 0)
+			return 0;
+		else if (n == 1)
+			return 1;
+		else
+		{
+			int num= (fib(n - 1) + fib(n - 2)) ;
+			return num;
+		}
+	}
+};
 
+	int main()
+	{
+		Solution s;
+		s.fib(5);
+	}
+
+/*
 class Solution {
 public:
 	vector<int> twoSum(vector<int>& nums, int target) {
@@ -38,6 +59,8 @@ int main()
 	 //return left + right;
 //}
 
+
+*/
 /*
 int Add(int left, int right)
 {
