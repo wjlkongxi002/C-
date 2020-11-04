@@ -1,9 +1,47 @@
 #define _CRT_SECURE_NO_WARNINGS 1
 
+#include <stdio.h>
+#include <stdint.h>
 #include <iostream>
 #include <vector>
 #include <string>
 using namespace std;
+
+//  剑指 Offer 15. 二进制中1的个数   https://leetcode-cn.com/problems/er-jin-zhi-zhong-1de-ge-shu-lcof/
+/*
+请实现一个函数，输入一个整数，输出该数二进制表示中 1 的个数。
+例如，把 9 表示成二进制是 1001，有 2 位是 1。因此，如果输入 9，则该函数输出 2
+*/
+
+/*
+class Solution {
+public:
+	int hammingWeight(uint32_t n) {
+		uint32_t count = 0;
+		while (n)
+		{
+			if ((n & 1) == 1)
+			{
+				count++;
+			}
+			n >>= 1;
+		}
+		cout << count << endl;
+		return count;
+	}
+};
+
+int main()
+{
+	Solution s;
+	s.hammingWeight(5);
+	return 0;
+}
+*/
+
+
+
+
 
 
 // 剑指offer 06 从尾到头打印链表   https://leetcode-cn.com/problems/cong-wei-dao-tou-da-yin-lian-biao-lcof/
