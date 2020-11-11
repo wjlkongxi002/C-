@@ -6,6 +6,61 @@
 using namespace std;
 
 
+/*
+
+// ÕıÈ·´úÂë
+
+class Solution {
+public:
+	/*
+	* @param number string×Ö·û´®
+	* @return string×Ö·û´®
+	*/
+	string change(string number) {
+		// write code here
+		int len = number.size();
+		int i = 0, j = len - 1;
+		while (i < j) {
+			while (i < j && (number[i] - '0') & 1)
+				i++;
+			while (i < j && (number[j] - '0') & 1)
+				j--;
+			if (i < j)
+				swap(number[i++], number[j--]);
+		}
+		return number;
+	}
+};
+
+*/
+
+
+/*
+//  ´íÎó´úÂë
+
+class Solution {
+public:
+	
+	string change(string number) {
+		int len = number.length();
+		int it = 0, rit = len - 1;
+		while (it < rit)
+		{
+			while (it < rit && (number[it] - '0') & 1)
+				it++;
+			while (it < rit && (number[rit] - '0') & 1)
+				rit--;
+			if (it<rit)
+				swap(number[it++], number[rit++]);
+		}
+		return number;
+	}
+};
+*/
+
+
+
+/*
 class Solution {
 public:
 	int fib(int n) {
