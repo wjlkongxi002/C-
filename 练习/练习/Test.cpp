@@ -1,21 +1,83 @@
-#define _CRT_SECURE_NO_WARNINGS 1
+ï»¿#define _CRT_SECURE_NO_WARNINGS 1
+#include <stdio.h>
 #include <iostream>
 #include <string>
 #include <vector>
 #include<math.h>
+#include <list>
 using namespace std;
+int main()
 
+{
+
+	int array[] = { 1, 2, 3, 4, 0, 5, 6, 7, 8, 9 };
+
+	int n = sizeof(array) / sizeof(int);
+
+	list<int> mylist(array, array + n);
+
+	auto it = mylist.begin();
+
+	while (it != mylist.end())
+
+	{
+
+		if (*it != 0)
+
+			cout << *it << " ";
+
+		else
+
+			it = mylist.erase(it);
+
+		++it;
+
+	}
+
+	return 0;
+
+}
+
+/*
+int main()
+{
+
+	int ar[] = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+
+	int n = sizeof(ar) / sizeof(int);
+
+	list<int> mylist(ar, ar + n);
+
+	list<int>::iterator pos = find(mylist.begin(), mylist.end(), 5);
+
+	reverse(mylist.begin(), pos);
+
+	reverse(pos, mylist.end());
+
+	list<int>::const_reverse_iterator crit = mylist.crbegin();
+
+	while (crit != mylist.crend())
+
+	{
+
+		cout << *crit << " ";
+
+		++crit;
+
+	}
+
+	cout << endl;
+	return 0;
+
+}
 
 /*
 
-// ÕýÈ·´úÂë
+// æ­£ç¡®ä»£ç 
 
 class Solution {
 public:
-	/*
-	* @param number string×Ö·û´®
-	* @return string×Ö·û´®
-	*/
+	
 	string change(string number) {
 		// write code here
 		int len = number.size();
@@ -32,11 +94,10 @@ public:
 	}
 };
 
-*/
 
 
 /*
-//  ´íÎó´úÂë
+//  é”™è¯¯ä»£ç 
 
 class Solution {
 public:
@@ -109,7 +170,7 @@ int main()
 	return 0;
 }
 
-//double Add(int left, int right)º¯ÊýÖØÔØ£¬²»¿¼ÂÇº¯Êý·µ»ØÖµÀàÐÍ
+//double Add(int left, int right)å‡½æ•°é‡è½½ï¼Œä¸è€ƒè™‘å‡½æ•°è¿”å›žå€¼ç±»åž‹
 //{
 	 //return left + right;
 //}
@@ -395,7 +456,7 @@ int main()
 }
 
 /*
-//Êä³ö&&&&&&&
+//è¾“å‡º&&&&&&&
 int main()
 {
 	int i = 1;
@@ -455,7 +516,7 @@ int main()
 void func(char **m)
 {
 	m++;
-	cout << *m << endl;//afternoonÊä³ö½á¹û
+	cout << *m << endl;//afternoonè¾“å‡ºç»“æžœ
 }
 int main()
 {
