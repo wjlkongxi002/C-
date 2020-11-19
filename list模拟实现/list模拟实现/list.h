@@ -80,7 +80,7 @@ namespace bite
 
 	};
 
-
+	// 反向迭代器，直接将正向迭代器进行封装
 	template<class T, class Iterator>
 	class ListReverseIterator
 	{
@@ -91,13 +91,13 @@ namespace bite
 			: _it(pNode)
 		{}
 
-		ListReverseIterator(Itertor it)
+		ListReverseIterator(Iterator it)
 			:_it(it)
 		{}
 
 		T& operator*()
 		{
-			Itrator temp(_it);
+			Iterator temp(_it); // 创建一个临时变量temp
 			--temp;
 			return *temp;
 		}
@@ -152,7 +152,7 @@ namespace bite
 	{
 		typedef ListNode<T> Node;
 	public:
-		typedef LisIterator<T> iterator;
+		typedef ListIterator<T> iterator;
 		typedef ListReverseIterator<T, iterator> reverse_iterator;
 	public:
 		list()
@@ -181,7 +181,7 @@ namespace bite
 		list(list<T>& L)
 		{
 			CreateHead();
-			suto it = L.begin();
+			auto it = L.begin();
 			while (it != L.end())
 			{
 				push_back(*it);
@@ -216,7 +216,7 @@ namespace bite
 
 		reverse_iterator rend()
 		{
-			return reserve_iterator(begin());
+			return reverse_iterator(begin());
 		}
 
 		/////////////////////////////////////
@@ -236,6 +236,8 @@ namespace bite
 		{
 			return head->next == head;
 		}
+
+
 
 		void resize(size_t newsize, const T& data = T())
 		{
@@ -293,14 +295,48 @@ namespace bite
 			erase(--end());
 		}
 
-		iterator insert(iterator pos, const T& data)
+		iterator insert(iterator pos, const T& data) // 任意位置的插入
 		{
 			Node* newnode = new Node(data);
-		
+			pos._ptr->prev->next = newnode;
+			newnode->next = pos._ptr;
+			newnode->prev = pos._ptr->prev;
+			pos._ptr->prev = newnode;
+
+			return iterator(newnode);
 		}
 
+		iterator erase(iterator pos) // 任意位置的删除
+		{
+			Node* posnode = pos._ptr;
+			if (posnode != head)
+			{
+              posnode->prev->next = posnode->next;
+			  posnode->next->prev = posnode->prev;
+			}
+			
+			return iterator(posnode->next);
+		}
 
+		iterator erase(iterator first, iterator last)  // 区间删除
+		{
+			while (first != last)
+			{
+				first = erase(first);
+			}
+			return end();
 
+		}
+
+		void clear()
+		{
+			erase(begin(), end());
+		}
+
+		void swap(const list<T>& L)
+		{
+			std::swap(head, L.head);
+		}
 
 	private:
 		void CreateHead()
@@ -316,3 +352,49 @@ namespace bite
 }
 
 
+#include <iostream>
+using namespace std;
+
+void Test1()
+{
+	bite::list<int> L1;
+	bite::list<int> L2(10, 5);
+	cout << L2.size() << endl;
+	auto it = L2.begin();
+	while (it != L2.end())
+	{
+		cout << *it << " ";
+		++it;
+	}
+	cout << endl;
+
+	int arr[] = { 1, 2, 3, 4, 5 };
+	bite::list<int> L3(arr, arr + (sizeof(arr) / sizeof(arr[0])));
+	for (auto e : L3)
+	{
+		cout << e << " ";
+	}
+	cout << endl;
+
+	bite::list<int> L4(L3);
+}
+
+void Test2()
+{
+	int arr[] = { 1, 2, 3, 4, 5 };
+	bite::list<int> L(arr, arr + (sizeof(arr) / sizeof(arr[0])));
+	auto it = L.rbegin();
+	while (it != L.rend())
+	{
+		cout << *it << " ";
+		++it;
+	}
+	cout << endl;
+
+	L.resize(10, 6);
+	cout << L.size() << endl;
+
+	L.resize(3);
+	cout << L.size() << endl;
+
+}
