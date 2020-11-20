@@ -4,8 +4,55 @@
 #include <stdint.h>
 #include <iostream>
 #include <vector>
+#include<math.h>
 #include <string>
 using namespace std;
+
+//素数 ：输入一个整数n(2<=n<=10000)，
+//要求输出所有从1到这个整数之间(不包括1和这个整数)个位为1的素数，如果没有则输出-1。 
+//https://www.nowcoder.com/questionTerminal/7f4be54b37a04fdaa4ee545819151114
+bool Isnum(int m)  //  判断是不是素数  
+{
+	for (int i = 2; i < m; ++i)
+	{
+		if (m%i == 0)
+			return false;
+	}
+	return true;
+}
+int main()
+{
+	vector<int> v;
+	int n;
+	while (cin >> n)
+	{
+		for (int j = 2; j<n; ++j)
+		{
+			if (Isnum(j) && (j % 10 == 1))
+				v.push_back(j);
+			//  if 判断还是比较好 
+			//while (Isnum(j))
+			//{
+			//	if (j % 10 == 1)
+			//		v.push_back(j);
+			//	++j;
+			//}
+			
+		}
+		if (v.empty())
+		{
+			cout <<  -1;
+		}
+		for (int i = 0; i<v.size() - 1; ++i)
+		{
+			cout << v[i] << " ";
+		}
+		cout << v[v.size() - 1];
+	}
+	return 0;
+}
+
+
 
 //  剑指 Offer 15. 二进制中1的个数   https://leetcode-cn.com/problems/er-jin-zhi-zhong-1de-ge-shu-lcof/
 /*
