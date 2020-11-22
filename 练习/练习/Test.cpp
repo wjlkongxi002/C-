@@ -6,6 +6,48 @@
 #include<math.h>
 #include <list>
 using namespace std;
+
+
+bool Isnum(int n)
+{
+	for (int i = 1; i < sqrt(n); ++i)
+	{
+		if (n%i == 0)
+			return false;
+		++i;
+	}
+	return true;
+}
+int main()
+{
+	vector<int> v;
+	int n;
+	while (cin >> n)
+	{
+		for (int i = 2; i<n; ++i)
+		{
+			while (Isnum(i))
+			{
+				if (i % 10 == 1)
+					v.push_back(i);
+			}
+			for (int i = 0; i<v.size() - 1; ++i)
+			{
+				cout << v[i] << " ";
+			}
+			cout << v[v.size()];
+		}
+		if (v.empty())
+		{
+			return -1;
+		}
+	}
+	return 0;
+}
+
+
+/*
+
 int main()
 
 {
@@ -36,7 +78,8 @@ int main()
 
 	return 0;
 
-}
+}*/
+
 
 /*
 int main()
