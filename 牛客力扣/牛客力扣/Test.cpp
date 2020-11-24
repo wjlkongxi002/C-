@@ -5,11 +5,48 @@
 #include <string>
 using namespace std;
 
+class Solution {
+public:
+	int MoreThanHalfNum_Solution(vector<int> numbers) {
+		vector<int> v;
+		int count = 0;
+		sort(numbers.begin(), numbers.end());
+		for (int i = 0; i < numbers.size(); ++i)
+		{
+			while (numbers[i + 1] == numbers[i])
+			{
+				count++;
+			}
+			if (count > numbers.size() / 2)
+				cout << numbers[i];
+		}
+		return 0;
+	}
+};
+
+int main()
+{
+	Solution s;
+	vector<int> v1{ 1, 2, 3, 2, 2, 2, 2, 5, 2 };
+	s.MoreThanHalfNum_Solution(v1);
+
+	return 0;
+}
+
+
+
+
+
+
+
+
+
 
 // https://www.nowcoder.com/questionTerminal/181a1a71c7574266ad07f9739f791506
 //查找两个字符串a, b中的最长公共子串。若有多个，输出在较短串中最先出现的那个。
 //注：子串的定义：将一个字符串删去前缀和后缀（也可以不删）形成的字符串。请和“子序列”的概念分开！
 
+/*
 int main()
 {
 	string a, b;
@@ -33,6 +70,11 @@ int main()
 	}
 	return 0;
 }
+
+*/
+
+
+
 
 
 // 组队竞争
