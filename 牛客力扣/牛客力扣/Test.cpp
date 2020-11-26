@@ -6,6 +6,12 @@
 using namespace std;
 
 
+//  未解决
+
+
+//  数组中出现次数超过一半的数字
+//  https://www.nowcoder.com/practice/e8a1b01a2df14cb2b228b30ee6a92163?tpId=13&tqId=11181&tPage=2&rp=2&ru=/ta/coding-interviews&qru=/ta/coding-interviews/question-ranking
+
 /*
 class Solution {
 public:
@@ -34,10 +40,48 @@ int main()
 
 	return 0;
 }
+*/
 
+
+
+
+//  计算糖果
+//  A,B,C三个人是好朋友,每个人手里都有一些糖果,我们不知道他们每个人手上具体有多少个糖果,但是我们知道以下的信息：
+//  A - B, B - C, A + B, B + C.这四个数值.每个字母代表每个人所拥有的糖果数.
+//  现在需要通过这四个数值计算出每个人手里有多少个糖果, 即A, B, C。这里保证最多只有一组整数A, B, C满足所有题设条件。
+//https://www.nowcoder.com/practice/02d8d42b197646a5bbd0a98785bb3a34?tpId=85&&tqId=29857&rp=1&ru=/activity/oj&qru=/ta/2017test/question-ranking
+
+/*
+#include <iostream>
+using namespace std;
+
+int main()
+{
+	int a, b, c, d;
+	cin >> a >> b >> c >> d;
+	int A = (a + c) / 2;
+	int B1 = (b + d) / 2;
+	int C = (d - b) / 2;
+	int B2 = (c - a) / 2;
+	if (B1 != B2)
+		cout << "No";
+	else
+		cout << A << " " << B1 << " " << C;
+	return 0;
+}
 
 */
 
+
+
+
+
+//  排序子序列
+//  定义连续子序列：非递增或者非递减排序最少可以分为多少个子序列
+//  把一个长度为n的整数数组分成若干段子序列，至少可以分为多少个子序列
+//  https://www.nowcoder.com/questionTerminal/2d3f6ddd82da445d804c95db22dcc471?orderByHotValue=1&page=1&onlyReference=false
+
+/*
 int main()
 {
 	int n;
@@ -77,6 +121,9 @@ int main()
 	cout << count << endl;
 	return 0;
 }
+
+*/
+
 
 
 
