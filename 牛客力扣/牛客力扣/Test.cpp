@@ -42,6 +42,38 @@ int main()
 }
 */
 
+
+/*
+“回文串”是一个正读和反读都一样的字符串，比如“level”或者“noon”等等就是回文串。
+花花非常喜欢这种拥有对称美的回文串，生日的时候她得到两个礼物分别是字符串A和字符串B。
+现在她非常好奇有没有办法将字符串B插入字符串A使产生的字符串是一个回文串。
+你接受花花的请求，帮助她寻找有多少种插入办法可以使新串是一个回文串。如果字符串B插入的位置不同就考虑为不一样的办法。
+*/
+
+#include<iostream>
+#include<string>
+using namespace std;
+// 判断是否是回文
+bool IsCircleText(const string& s)
+{
+	size_t begin = 0;
+	size_t end = s.size() - 1;
+	while (begin < end)
+	{
+		if (s[begin] != s[end])
+			return false;
+		++begin;
+		--end;
+	} 
+	return true;
+} 
+int main()
+{
+	std::string str1, str2;
+	getline(cin, str1);
+	getline(cin, str2);
+}
+
 // 查找两个字符串a,b中的最长公共子串。若有多个，输出在较短串中最先出现的那个。
 // https://www.nowcoder.com/questionTerminal/181a1a71c7574266ad07f9739f791506
 
