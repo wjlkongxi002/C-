@@ -8,7 +8,6 @@ using namespace std;
 
 //  未解决
 
-
 //  数组中出现次数超过一半的数字
 //  https://www.nowcoder.com/practice/e8a1b01a2df14cb2b228b30ee6a92163?tpId=13&tqId=11181&tPage=2&rp=2&ru=/ta/coding-interviews&qru=/ta/coding-interviews/question-ranking
 
@@ -43,6 +42,38 @@ int main()
 */
 
 
+//  输入一个字符串，求出该字符串包含的字符集合
+//  https://www.nowcoder.com/questionTerminal/784efd40ed8e465a84821c8f3970b7b5
+
+/*
+#include<iostream>
+using namespace std;
+#include<string>
+int main()
+{
+	string str;
+	while (cin >> str)
+	{
+		int count[256] = { 0 };
+		int size = str.size();
+		for (int i = 0; i < size; ++i)
+		{
+			if (0 == count[str[i]])
+				cout << str[i];
+			count[str[i]]++;
+		}
+		cout << endl;
+	}
+	return 0;
+}
+
+
+*/
+
+
+
+
+
 /*
 “回文串”是一个正读和反读都一样的字符串，比如“level”或者“noon”等等就是回文串。
 花花非常喜欢这种拥有对称美的回文串，生日的时候她得到两个礼物分别是字符串A和字符串B。
@@ -50,6 +81,8 @@ int main()
 你接受花花的请求，帮助她寻找有多少种插入办法可以使新串是一个回文串。如果字符串B插入的位置不同就考虑为不一样的办法。
 */
 
+
+/*
 #include<iostream>
 #include<string>
 using namespace std;
@@ -74,10 +107,14 @@ int main()
 	getline(cin, str2);
 }
 
+*/
+
+
 // 查找两个字符串a,b中的最长公共子串。若有多个，输出在较短串中最先出现的那个。
 // https://www.nowcoder.com/questionTerminal/181a1a71c7574266ad07f9739f791506
 
 
+/*
 #include<iostream>
 #include<string>
 using namespace std;
@@ -104,6 +141,9 @@ int main()
 	}
 	return 0;
 }
+
+*/
+
 
 
 
