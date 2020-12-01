@@ -41,6 +41,135 @@ int main()
 }
 */
 
+////////////////////////////////////////////////////
+//  合法括号序列判断
+//   https://www.nowcoder.com/questionTerminal/d8acfa0619814b2d98f12c071aef20d4
+
+/*
+class Parenthesis {
+public:
+	bool chkParenthesis(string A, int n) {
+		// write code here
+		stack<char> s;
+		for (auto it = A.begin(); it != A.end(); it++)
+		{
+			if (*it == '(')
+			{
+				s.push(*it);
+			}
+			else
+			{
+				if (*it != ')' || s.empty())
+					return false;
+				else
+					s.pop();
+			}
+		}
+		if (s.empty())
+			return true;
+		else
+			return false;
+	}
+};
+*/
+
+
+
+
+///////////////////////////////////////
+//  斐波拉契数列，求一个数离他最近斐波拉契数的距离
+//
+//  https://exam.nowcoder.com/cts/17107720/summary?id=8930AAC2D789E146#4/{%22uid%22%3A%228930AAC2D789E146%22%2C%22type%22%3A%224%22%2C%22index%22%3A0}
+
+/*
+//    思想：计算出Fib 将他和N比较，F在他左边的时候：l=N-F，右边的时候：r=F-N  
+//    找出l和r的最小值就可以了
+int main()
+{
+	int N, f, l = 0, r = 0;
+	int f0 = 0, f1 = 1;
+	cin >> N;
+	while (1)
+	{
+		f = f0 + f1;
+		f0 = f1;
+		f1 = f;
+
+		if (f < N)
+		{
+			l = N - f;
+		}
+		else if (f > N)
+		{
+			r = f - N;
+			break;
+		}
+	}
+	cout << min(l, r) << endl;
+	return 0;
+}
+
+*/
+
+
+
+//      还没有做出来 自己的思想：先判断是不是Fib，是的话 通过计数器算出离他最近的
+//  现在的问题是：判断出了问题，还有是计数器的实现不对
+
+bool IsFib(int n)
+{
+	if (n == 0 || n == 1)
+		return true;
+	else
+	{
+		int n0 = 0, n1 = 1;
+		while (n == n1 + n0)
+		{
+
+		}
+	}
+}
+int main()
+{
+	int N;
+	cin >> N;
+	int count = 0;
+	if (IsFib(N))
+	{
+		cout << 0;
+	}
+	else if (!IsFib(N))
+	{
+		while (!IsFib(N))
+		{
+			count++;
+			N--;
+		}
+		cout << count;
+	}
+	return 0;
+}
+
+
+//  求输出a ，b ， c
+/*
+#include <stdio.h>
+int main()
+{
+	int a = 1, b = 2, c = 3, d = 0;
+	if (a == 1 && b++ == 2)
+	if (b != 2 || c-- != 3)  //  || 前面的运算结果成立（为1），后面的就不用计算了，C值不变
+		printf("%d,%d,%d\n", a, b, c);
+	else
+		printf("%d,%d,%d\n", a, b, c);
+	else
+		printf("%d,%d,%d\n", a, b, c);
+	return 0;
+}
+
+*/
+
+
 
 //  输入一个字符串，求出该字符串包含的字符集合
 //  https://www.nowcoder.com/questionTerminal/784efd40ed8e465a84821c8f3970b7b5
