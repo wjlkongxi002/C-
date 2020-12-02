@@ -41,6 +41,57 @@ int main()
 }
 */
 
+///////////////////////////////////////////
+//  求最小公倍数
+// https://www.nowcoder.com/practice/22948c2cad484e0291350abad86136c3?tpId=37&&tqId=21331&rp=1&ru=/activity/oj&qru=/ta/huawei/question-ranking
+
+
+
+int main()
+{
+	int A, B;
+	cin >> A >> B;
+	int max;
+	if (A >= B)
+		max = A;
+	else
+		max = B;
+	for (int i = max; i <= A*B; i++)
+	{
+		if ((i%A == 0) && (i%B == 0))
+		{
+            cout << i;
+			break;
+		}
+			
+	}
+	return 0;
+}
+
+/*
+int main()
+{
+	int A, B;
+	cin >> A >> B;
+	int min, max, tmp;
+	max = (A>B) ? A : B;
+	min = (A>B) ? B : A;
+	tmp = max;
+	while (1)
+	{
+		if (max % min == 0)
+		{
+			cout << max;
+			break;
+		}
+		else
+			max += tmp;
+	}
+	return 0;
+}
+*/
+
+
 ////////////////////////////////////////////////////
 //  合法括号序列判断
 //   https://www.nowcoder.com/questionTerminal/d8acfa0619814b2d98f12c071aef20d4
@@ -116,6 +167,8 @@ int main()
 //      还没有做出来 自己的思想：先判断是不是Fib，是的话 通过计数器算出离他最近的
 //  现在的问题是：判断出了问题，还有是计数器的实现不对
 
+
+/*
 bool IsFib(int n)
 {
 	if (n == 0 || n == 1)
@@ -149,6 +202,8 @@ int main()
 	}
 	return 0;
 }
+*/
+
 
 
 //  求输出a ，b ， c
