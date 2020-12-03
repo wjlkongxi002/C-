@@ -5,6 +5,28 @@
 #include <string>
 using namespace std;
 
+int main()
+{
+	int A, B;
+	cin >> A >> B;
+	int max;
+	if (A >= B)
+		max = A;
+	else
+		max = B;
+	for (int i = max; i <= A*B; i++)
+	{
+		if ((i%A == 0) && (i%B == 0))
+		{
+			cout << i;
+			break;
+		}
+
+	}
+	return 0;
+}
+
+
 
 //  Î´½â¾ö
 
