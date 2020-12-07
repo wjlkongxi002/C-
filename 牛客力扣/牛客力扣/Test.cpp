@@ -5,26 +5,7 @@
 #include <string>
 using namespace std;
 
-int main()
-{
-	int A, B;
-	cin >> A >> B;
-	int max;
-	if (A >= B)
-		max = A;
-	else
-		max = B;
-	for (int i = max; i <= A*B; i++)
-	{
-		if ((i%A == 0) && (i%B == 0))
-		{
-			cout << i;
-			break;
-		}
 
-	}
-	return 0;
-}
 
 
 
@@ -52,7 +33,6 @@ public:
 		return 0;
 	}
 };
-
 int main()
 {
 	Solution s;
@@ -63,12 +43,76 @@ int main()
 }
 */
 
+
+
+////////////////////////////////////////////////
+//查找组成一个偶数最接近的两个素数
+//https://www.nowcoder.com/practice/f8538f9ae3f1484fb137789dec6eedb9?tpId=37&&tqId=21283&rp=1&ru=/activity/oj&qru=/ta/huawei/question-ranking
+
+/*
+#include <iostream>
+#include <algorithm>
+
+using namespace std;
+
+bool Isprime(int num)
+{
+	for (int i = 2; i <= sqrt(num); ++i)
+	{
+		if (num%i == 0)
+			return false;
+	}
+	return true;
+}
+int main()
+{
+	int num;
+	while (cin >> num)
+	{
+		int i;
+		int mid = num / 2;
+		for (i = mid; i < num; ++i)
+		{
+			if (Isprime(i) && Isprime(num - i))
+				break;
+		}
+		cout << num - i << endl << i << endl;
+	}
+	return 0;
+}
+*/
+
+
+
+
+
+
+
+
+////////////////////////////////////////////
+//  二进制插入
+//  https://www.nowcoder.com/practice/30c1674ad5694b3f8f0bc2de6f005490?tpId=8&&tqId=11019&rp=1&ru=/activity/oj&qru=/ta/cracking-the-coding-interview/question-ranking
+/*
+class BinInsert {
+public:
+	int binInsert(int n, int m, int j, int i) {
+		// write code here
+		//n 1024 10000000000
+		//m 19         10011
+		//先将m左移j位， 再将两个或运算
+		m <<= j;
+		return m | n;
+	}
+};
+*/
+
+
+
 ///////////////////////////////////////////
 //  求最小公倍数
 // https://www.nowcoder.com/practice/22948c2cad484e0291350abad86136c3?tpId=37&&tqId=21331&rp=1&ru=/activity/oj&qru=/ta/huawei/question-ranking
-
-
-
+//  从两个数的最大值遍历到两个数的乘积，看满足同时除尽两个数
+/*
 int main()
 {
 	int A, B;
@@ -89,6 +133,7 @@ int main()
 	}
 	return 0;
 }
+*/
 
 /*
 int main()
