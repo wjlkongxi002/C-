@@ -45,7 +45,7 @@ namespace bite
 			return *this;
 		}
 
-		Self operator++(int) // 后置++
+		Self operator++(int) // 后置++ 重载后缀表达式必须给出一个虚拟参数，该参数只给出类型名
 		{
 			Self temp(*this);
 			_ptr = _ptr->next;
