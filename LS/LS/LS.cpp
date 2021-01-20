@@ -66,9 +66,9 @@ void Graph_DG::print() {
 		count_col = 0;
 		while (count_col != this->vexnum) {
 			if (arc[count_row][count_col] == INT_MAX)
-				cout << "¡Þ" << " ";
+				cout << "¡Þ" << "   ";
 			else
-				cout << arc[count_row][count_col] << " ";
+				cout << arc[count_row][count_col] << "    ";
 			++count_col;
 		}
 		cout << endl;
