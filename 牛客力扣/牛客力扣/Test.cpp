@@ -44,6 +44,40 @@ int main()
 */
 
 
+//https://www.nowcoder.com/questionTerminal/c0a4b917a15f40a49ca10532ab9019fb
+// 斐波那契凤尾 1--100000之间的斐波拉契数。给出一个数n，输出第n个斐波拉契数，如果大于六位数，就输出后六位
+
+/*
+#include <iostream>
+using namespace std;
+int main()
+{
+	int Fib[100001];
+	Fib[0] = 1;
+	Fib[1] = 1;
+	for (int i = 2; i <= 100000; ++i)
+	{
+		Fib[i] = Fib[i - 1] + Fib[i - 2];
+		Fib[i] = Fib[i] % 1000000;
+	}
+	int n;
+	while (std::cin >> n)
+	{
+		if (n < 29)
+		{
+			printf("%d\n", Fib[n]);
+		}
+		else
+		{
+			printf("%06d\n", Fib[n]);
+		}
+	}
+	return 0;
+}
+
+*/
+
+
 
 ////////////////////////////////////////////////
 //查找组成一个偶数最接近的两个素数
